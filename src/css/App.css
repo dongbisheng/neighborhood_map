@@ -1,0 +1,14 @@
+.main_container {
+    display: flex;
+    flex-direction: column;
+}
+.main_content {
+    display: flex;
+    flex-direction: row;
+}
+header,footer{
+    background-color: cadetblue;
+    text-align: center;
+    color: white;
+}
+

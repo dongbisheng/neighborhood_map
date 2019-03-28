@@ -1,0 +1,12 @@
+ .slider_div ul {
+    list-style: none;
+}
+ .slider_div {
+     min-width: 30%;
+
+ }
+ .slider_div select {
+     width: 80%;
+     height: 40px;
+     font-size: 1.5em;
+ }
