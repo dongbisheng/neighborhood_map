@@ -1,22 +1,38 @@
 import React, { Component } from 'react'
-import './css/Slider.css'
+import PropType from 'prop-types'
 
 class Slider extends Component {
+    static propTypes = {
+        title: PropType.string,
+        opts: PropType.any,
+        venues: PropType.any,
+        optChanged: PropType.func,
+        venueClick: PropType.func
+    }
+    static defaultProps = {
+        title: "",
+        opts: [],
+        venues: []
+    }
     render() {
         return (
             <div className="slider_div">
-                <p>选择区域</p>
-                <select>
-                    <option>hello</option>
-                    <option>world</option>
-                    <option>huhu</option>
-                    <option>hahah</option>
+                <p>{this.props.title}</p>
+                <select role="listbox" aria-label="category-filter" onChange={(e)=>{this.props.optChanged(e.target.value)}}>
+                    {
+                        this.props.opts.map(opt => (
+                            <option key={opt.id}
+
+                            >{opt.name}</option>
+                        ))
+                    }
                 </select>
                 <ul>
-                    <li>first place</li>
-                    <li>first place</li>
-                    <li>first place</li>
-                    <li>first place</li>
+                    { this.props.venues.map(venue => (
+                        <li onClick={()=>{this.props.venueClick(venue)}}
+                            key={venue.id}>{venue.name}
+                        </li>
+                    ))}
                 </ul>
             </div>
         )
