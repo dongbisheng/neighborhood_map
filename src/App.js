@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import GMapView from './MapContainer'
 import Slider from './Slider'
 import * as VenueApi from './DataFetcher'
 import './css/App.css'
+import StoneModel from './CustomMarker/StoneModal'
+
+
 
 class App extends Component {
     state = {
@@ -12,7 +15,12 @@ class App extends Component {
         currentVenue: {lat: 39.909264,
             lng: 116.397078},
         allVenues: [],
-        isOpen: false
+        isOpen: false,
+        modalInfo: {
+            isShow: false,
+            title: '网络错误',
+            description: '请稍后重试'
+        }
     }
     filterPlace = (value) => {
         this.setState((state) => {
@@ -49,6 +57,20 @@ class App extends Component {
     return (
       <div className="App">
           <div className="main_container">
+              <StoneModel isOpen={this.state.modalInfo.isShow}
+                          handleClose={()=>{
+                              this.setState((state) => {
+                                  state.modalInfo.isShow = false
+                                  return {
+                                      modalInfo: state.modalInfo
+                                  }
+                                  }
+                              )
+                          }}
+                          info={{title:this.state.modalInfo.title,
+                          description: this.state.modalInfo.description}}
+
+              />
               <header><h1>Neighthorhood Map</h1></header>
               <div className="main_content">
                   <Slider opts={this.state.categories}
@@ -109,6 +131,14 @@ class App extends Component {
                 }),
                 categories: cates,
                 currentVenues: res
+            })
+        }).catch(err => {
+            this.setState({
+                modelInfo: {
+                    title: '网络错误',
+                    description: err,
+                    isShow: true
+                }
             })
         })
   }
