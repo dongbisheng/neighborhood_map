@@ -17,6 +17,8 @@
 需要安装node.js,可以使用yarn或者npm安装依赖包
 
 `npm install` 或者 `yarn install` 安装依赖包
+
 `npm run start` 或者 `yarn start` 开启开发本地服务器
+
 使用浏览器打开localhost:3000即可看到页面
 
