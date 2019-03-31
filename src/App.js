@@ -104,7 +104,7 @@ class App extends Component {
             }
             this.setState({
                 allVenues: res.map((ven) => {
-                    ven.pic = '../imgs/default.png'
+                    ven.pic = './imgs/default.png'
                     return ven
                 }),
                 categories: cates,

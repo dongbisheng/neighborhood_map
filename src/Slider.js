@@ -29,7 +29,10 @@ class Slider extends Component {
                 </select>
                 <ul>
                     { this.props.venues.map(venue => (
-                        <li onClick={()=>{this.props.venueClick(venue)}}
+                        <li role="venue_option"
+                            tabIndex="0"
+                            onClick={()=>{this.props.venueClick(venue)}}
+                            onFocus={()=>{this.props.venueClick(venue)}}
                             key={venue.id}>{venue.name}
                         </li>
                     ))}

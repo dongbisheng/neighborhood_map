@@ -21,7 +21,7 @@ export default class StoneInfoWindow extends Component {
     render() {
         return (
             <div className="infowindow" style={this.style}>
-                <button className="close_btn" onClick={this.props.removeAction}>关闭</button>
+                <button className="close_btn" tabIndex="-1" onClick={this.props.removeAction}>关闭</button>
                 <img alt={this.props.venue.name} src={this.props.venue.pic}/>
                 <h2>{this.props.venue.name}</h2>
                 <p>Address: {this.props.venue.address}</p>
